@@ -27,11 +27,12 @@ We will be:
    - interesting science questions about calendars and annual cycles
 
 #### Week 2, 24 Sep 2017, Tools and Goals
- - Overview
  
+##### Agenda
    It's hard to set goals without some idea of:
      - Why you're doing what you're doing, and
      - What resources you have to do it with
+     
    We tried to address the *why* last week. We may have to leave that unresolved for now.
    This week we'll think about the tools we could use and what we could do with them.
    We'll try to select tools (languages, etc.) this week, try to set some basic goals,
@@ -46,8 +47,6 @@ We will be:
      - Cons:
        - Can only make command-line programs (unless wanting to learn a lot of other stuff)
        - Not usable with PencilCode (if that matters)
-        - Reasonable goals if using Python:
-       - ...
    - JavaScript
      - Pros:
        - Can use simply for command line like Python
@@ -56,13 +55,24 @@ We will be:
          (Then have to also learn something about HTML, CSS, (React?), etc.)
      - Cons:
        - Messier than python
-     - Reasonable goals if using JavaScript:
-       - ...
-   - Other?
-  - Goals
-# Notes 
- - Five people
- - A few online resources
- - Five computers
- - GitHub account
- - Knowledge of language, calendars, and programming
+       
+##### Minutes
+  - Tool choices: Python (unless SSG's need to check syntax all the time gets annoying) -- all, especially JM
+  - Goals: Just build the converter. nothing else for now (MG)
+  - We went on a lot of tangents, but only to fill in knowledge about technology. Some questions we answered:
+    - What's a command line, what's a graphical user interface (GUI)?
+    - What is the Internet? (we were going to talk more about how it works but didn't get a chance)
+    - Why are some browsers better than others -- like Chrome is good, IE is bad? (JM) (SSG's answer: because 
+      IE sucks -- at least it used to, a lot) (the other questions got better answers)
+    - What's a directory? What's a file?
+    - How do you "save work" when you're working on a command line? (MFB)
+    - We will use https://www.pythonanywhere.com as our Python environment/IDE for now
+  # Notes 
+  
+  - Five people
+  - A few online resources
+  - Five computers
+  - GitHub account
+  - Knowledge of language, calendars, and programming
+
+
