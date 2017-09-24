@@ -60,3 +60,4 @@ We will be:
        - ...
    - Other?
   - Goals
+# Notes 
