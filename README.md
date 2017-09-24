@@ -61,3 +61,8 @@ We will be:
    - Other?
   - Goals
 # Notes 
+ - Five people
+ - A few online resources
+ - Five computers
+ - GitHub account
+ - Knowledge of language, calendars, and programming
