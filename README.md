@@ -38,7 +38,7 @@ We will be:
    We'll try to select tools (languages, etc.) this week, try to set some basic goals,
    and, if we have time, start figuring out how we will help everyone begin doing 
    actual work.
- - Tool choices
+##### Tool choices
    - Python
      - Pros:
        - Language taught in schools, will be relevant
@@ -57,6 +57,7 @@ We will be:
        - Messier than python
 
 ##### Notes (MFB during class)
+
     - Five people
     - A few online resources
     - Five computers
@@ -64,9 +65,9 @@ We will be:
     - Knowledge of language, calendars, and programming
 
 ##### Minutes
-- Tool choices: Python (unless SSG's need to check syntax all the time gets annoying) -- all, especially JM
-  - Goals: Just build the converter. nothing else for now (MG)
-  - We went on a lot of tangents, but only to fill in knowledge about technology. Some questions we answered:
+ - Tool choices: Python (unless SSG's need to check syntax all the time gets annoying) -- all, especially JM
+ - Goals: Just build the converter. nothing else for now (MG)
+ - We went on a lot of tangents, but only to fill in knowledge about technology. Some questions we answered:
     - What's a command line, what's a graphical user interface (GUI)?
     - What is the Internet? (we were going to talk more about how it works but didn't get a chance)
     - Why are some browsers better than others -- like Chrome is good, IE is bad? (JM) (SSG's answer: because 
