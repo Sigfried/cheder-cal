@@ -55,9 +55,16 @@ We will be:
          (Then have to also learn something about HTML, CSS, (React?), etc.)
      - Cons:
        - Messier than python
-       
+
+##### Notes (MFB during class)
+    - Five people
+    - A few online resources
+    - Five computers
+    - GitHub account
+    - Knowledge of language, calendars, and programming
+
 ##### Minutes
-  - Tool choices: Python (unless SSG's need to check syntax all the time gets annoying) -- all, especially JM
+- Tool choices: Python (unless SSG's need to check syntax all the time gets annoying) -- all, especially JM
   - Goals: Just build the converter. nothing else for now (MG)
   - We went on a lot of tangents, but only to fill in knowledge about technology. Some questions we answered:
     - What's a command line, what's a graphical user interface (GUI)?
@@ -67,12 +74,5 @@ We will be:
     - What's a directory? What's a file?
     - How do you "save work" when you're working on a command line? (MFB)
     - We will use https://www.pythonanywhere.com as our Python environment/IDE for now
-  # Notes 
   
-  - Five people
-  - A few online resources
-  - Five computers
-  - GitHub account
-  - Knowledge of language, calendars, and programming
-
 
