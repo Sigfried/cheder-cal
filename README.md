@@ -46,7 +46,8 @@ We will be:
      - Cons:
        - Can only make command-line programs (unless wanting to learn a lot of other stuff)
        - Not usable with PencilCode (if that matters)
-     - Reasonable goals if using Python
+        - Reasonable goals if using Python:
+       - ...
    - JavaScript
      - Pros:
        - Can use simply for command line like Python
@@ -55,6 +56,7 @@ We will be:
          (Then have to also learn something about HTML, CSS, (React?), etc.)
      - Cons:
        - Messier than python
-     - Reasonable goals if using JavaScript
+     - Reasonable goals if using JavaScript:
+       - ...
    - Other?
   - Goals
