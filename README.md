@@ -80,7 +80,7 @@ We will be:
 #### Week 3, 15 Oct 2017, Environment
  
 ##### Agenda
-   Does everyone have a computer?
-   Connect to internet
-   Make ourselves accounts with pythonanywhere
-   Try out tutorials
+  - Does everyone have a computer?
+  - Connect to internet
+  - Make ourselves accounts with pythonanywhere
+  - Try out tutorials
