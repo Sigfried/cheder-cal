@@ -77,3 +77,10 @@ We will be:
     - We will use https://www.pythonanywhere.com as our Python environment/IDE for now
   
 
+#### Week 3, 15 Oct 2017, Environment
+ 
+##### Agenda
+   Does everyone have a computer?
+   Connect to internet
+   Make ourselves accounts with pythonanywhere
+   Try out tutorials
