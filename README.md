@@ -93,3 +93,19 @@ We will be:
   - Make ourselves accounts with pythonanywhere
   - Try out tutorials
     - https://help.pythonanywhere.com/pages/
+##### Minutes
+  - JM, LS had computers. JM needs to bring their own next time
+  - SSG tried to fix SMG's old linux laptop, to no avail. Will get a chromebook for next time.
+  - Everyone got accounts on puythonanywhere
+  - Started working on ideas for algorithm for Hebrew calendar:
+    - Taking day 1 to be Rosh Hashanah, Year 1, how do we calculate Hebrew year, month, date, and day of week
+      for any day n?
+      - JM suggests a while loop, adding 354 days for regular years and 384 days for leap years until passing
+        n days to determine year...
+      - SSG suggests calculating fixed standard period (constant x days for every pair of 19-year cycles?), 
+        divide n by x to get year...
+      - SSG didn't get a chance to read DS's materials on Hebrew calendar calculations until after class. More
+        complications that we hadn't accounted for. SSG started thinking algorithm definition impractical. Searched
+        for database of dates or something. Stumbled upon: http://www.fourmilab.ch/documents/calendar/ from 
+        http://www.fourmilab.ch/. Calculations for seemingly every calendar in the world!
+      - So what should we do?
