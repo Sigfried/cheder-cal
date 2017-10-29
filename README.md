@@ -109,3 +109,9 @@ We will be:
         for database of dates or something. Stumbled upon: http://www.fourmilab.ch/documents/calendar/ from 
         http://www.fourmilab.ch/. Calculations for seemingly every calendar in the world!
       - So what should we do?
+  - <strong><font color="red">No class next week!</font></strong>
+  
+##### Homework
+  - Everyone: follow pythonanytwhere tutorials.
+  - JM: compare pythonanywhere to other python web platform, let SSG know which seems better
+  - Had told LS to work on algorithm, but SSG needs to think more on it first
