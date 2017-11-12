@@ -1,8 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0043)http://www.fourmilab.ch/documents/calendar/ -->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
 <title>Calendar Converter</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <style type="text/css">
     body.main {
         margin-left: 15%;
@@ -65,15 +66,15 @@
     }
 </style>
 
-<meta name="keywords" content="calendar, converter, Julian, Gregorian, Islamic, Hebrew, Persian, Mayan, French, Indian">
-<meta name="description" content="Calendar Converter">
-<meta name="author" content="John Walker">
-<meta name="robots" content="index">
+<meta name="keywords" content="calendar, converter, Julian, Gregorian, Islamic, Hebrew, Persian, Mayan, French, Indian" />
+<meta name="description" content="Calendar Converter" />
+<meta name="author" content="John Walker" />
+<meta name="robots" content="index" />
 
-<script type="text/javascript" language="JavaScript" src="./fourmilab_files/astro.js">
+<script type="text/javascript" language="JavaScript" src="astro.js">
 </script>
 
-<script type="text/javascript" language="JavaScript" src="./fourmilab_files/calendar.js">
+<script type="text/javascript" language="JavaScript" src="calendar.js">
 </script>
 
 </head>
@@ -82,26 +83,28 @@
 
 <h1>Calendar Converter</h1>
 
-<hr>
+<hr />
 
-<p>
+<p />
 
-Welcome to <a href="http://www.fourmilab.ch/">Fourmilab</a>'s calendar converter!
+Welcome to <a href="/">Fourmilab</a>'s calendar converter!
 This page allows you to interconvert dates in a variety of
 calendars, both civil and computer-related.  All
 calculations are done in JavaScript executed in your own
 browser; complete source code is embedded in or linked to
-this page, and you're free to <a href="http://www.fourmilab.ch/documents/calendar/calcalc.zip">download</a>
+this page, and you're free to <a href="calcalc.zip">download</a>
 these files to your own
 computer and use them even when not connected to the
 Internet.  To use the page, your browser must support
 JavaScript and you must not have disabled execution of that
-language.  Let's see…
+language.  Let's see&hellip;
 
-</p><center>
+<center>
 
 <form name="warning" action="javascript:return false;">
-<input type="text" name="warning" style="background-color: rgb(160, 255, 160); color: rgb(0, 0, 0);" value="Your browser doesn&#39;t support JavaScript or it is disabled--you cannot use this calculator." size="70" class="ctr" readonly="readonly">
+<input type="text" name="warning" style="background-color: #FFA0A0; color: #000000;"
+    value="Your browser doesn't support JavaScript or it is disabled--you cannot use this calculator."
+    size="70" class="ctr" readonly="readonly" />
 </form>
 </center>
 
@@ -114,8 +117,8 @@ language.  Let's see…
 // -->
 </script>
 
-If the box above says “Your browser supports JavaScript”, you're in business;
-simply enter a date in any of the boxes below and press the “Calculate”
+If the box above says &ldquo;Your browser supports JavaScript&rdquo;, you're in business;
+simply enter a date in any of the boxes below and press the &ldquo;Calculate&rdquo;
 button to show that date in all of the other calendars.
 
 <!--
@@ -146,13 +149,13 @@ function dump(s, v)
 <form name="gregorian" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
 <td align="center">
 
-    <input type="text" name="year" value="1998" size="5">
+    <input type="text" name="year" value="1998" size="5" />
     <select name="month" size="1">
         <option value="1">January</option>
         <option value="2">February</option>
@@ -167,11 +170,11 @@ function dump(s, v)
         <option value="11">November</option>
         <option value="12">December</option>
     </select>
-    <input type="text" name="day" value="1" size="3">
+    <input type="text" name="day" value="1" size="3" />
 
-    <br>
+    <br />
 
-    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly">
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
@@ -180,7 +183,9 @@ function dump(s, v)
     Time:
 </th>
 <td align="center">
-    <input type="text" name="hour" value="00" size="2">:<input type="text" name="min" value="00" size="2">:<input type="text" name="sec" value="00" size="2">
+    <input type="text" name="hour" value="00" size="2" />:<input
+    	   type="text" name="min" value="00" size="2" />:<input
+	   type="text" name="sec" value="00" size="2" />
 </td>
 </tr>
 
@@ -189,18 +194,18 @@ function dump(s, v)
     Weekday:
 </th>
 <td align="center">
-    <input type="text" name="wday" value="" size="9" class="ctr" readonly="readonly">
+    <input type="text" name="wday" value="" size="9" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcGregorian();">
+<input type="button" value="Calculate" onclick="calcGregorian();" />
 &nbsp; &nbsp;
-<input type="button" value="Today" onclick="setDateToToday(); calcGregorian();">
+<input type="button" value="Today" onclick="setDateToToday(); calcGregorian();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <script type="text/javascript" language="JavaScript">
@@ -212,7 +217,7 @@ function dump(s, v)
 
 <p>
 The Gregorian calendar was
-<a href="http://www.fourmilab.ch/documents/calendar/IG_Latin.html" target="_blank">proclaimed</a>
+<a href="IG_Latin.html" target="_blank">proclaimed</a>
 by Pope Gregory XIII and took
 effect in most Catholic states in 1582, in which October 4, 1582 of
 the Julian calendar was followed by October 15 in the new calendar,
@@ -248,13 +253,13 @@ to the phases of the Moon.
 </p>
 
 <p>
-While one can't properly speak of “Gregorian dates” prior to
+While one can't properly speak of &ldquo;Gregorian dates&rdquo; prior to
 the adoption of the calendar in 1582, the calendar can be
 extrapolated to prior dates.  In doing so, this
 implementation uses the convention that the year prior to
 year 1 is year 0.  This differs from the Julian calendar in
-which there is no year 0—the year before year 1 in the Julian
-calendar is year &#8722;1.  The date December 30th, 0 in the Gregorian
+which there is no year 0&mdash;the year before year 1 in the Julian
+calendar is year &minus;1.  The date December 30th, 0 in the Gregorian
 calendar corresponds to January 1st, 1 in the Julian calendar.
 </p>
 
@@ -266,7 +271,7 @@ of 365.24225 days per year which, compared to the actual mean year
 of 365.24219878, is equivalent to an error of one day over a period
 of about 19,500 years; this is comparable to errors due to tidal
 braking of the rotation of the Earth.
-<br clear="left">
+<br clear="left" />
 </p>
 
                          <h3><a name="julianday">Julian Day</a></h3>
@@ -274,19 +279,19 @@ braking of the rotation of the Earth.
 <form name="julianday" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
     <b>Julian day:</b>
 
-    <input type="text" name="day" value="" size="16">
+    <input type="text" name="day" value="" size="16" />
 </td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcJulian();">
+<input type="button" value="Calculate" onclick="calcJulian();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -305,12 +310,12 @@ but has the additional advantage that all known historical astronomical
 observations bear positive Julian day numbers, and periods can
 be determined and events extrapolated by simple addition and
 subtraction.  Julian dates are a tad eccentric in starting at
-noon, but then so are astronomers (and systems programmers!)—when
-you've become accustomed to rising after the “crack of noon” and
+noon, but then so are astronomers (and systems programmers!)&mdash;when
+you've become accustomed to rising after the &ldquo;crack of noon&rdquo; and
 doing most of your work when the Sun is down, you appreciate
 recording your results in a calendar where the date doesn't change
 in the middle of your workday.  But even the Julian day convention 
-bears witness to the eurocentrism of 19th century astronomy—noon
+bears witness to the eurocentrism of 19th century astronomy&mdash;noon
 at Greenwich is midnight on the other side of the world.  But the Julian
 day notation is so deeply embedded in astronomy that it is unlikely
 to be displaced at any time in the foreseeable future.  It is an ideal
@@ -320,24 +325,24 @@ into other calendar systems, as the source code for this page illustrates.
 Use Julian days and fractions (stored in 64 bit or longer floating
 point numbers) in your programs, and be ready for Y10K, Y100K,
 and Y1MM!
-<br clear="left">
+<br clear="left" />
 </p>
 
 <form name="modifiedjulianday" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
     <b>Modified Julian day:</b>
-    <input type="text" name="day" value="" size="16">
+    <input type="text" name="day" value="" size="16" />
 </td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcModifiedJulian();">
+<input type="button" value="Calculate" onclick="calcModifiedJulian();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -352,7 +357,7 @@ specify the epoch in tables of orbital elements of
 artificial Earth satellites.  Since no such objects existed
 prior to October 4, 1957, all satellite-related MJDs are
 positive.
-<br clear="left">
+<br clear="left" />
 </p>
 
                      <h3><a name="juliancalendar">Julian Calendar</a></h3>
@@ -360,13 +365,13 @@ positive.
 <form name="juliancalendar" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
 <td align="center">
 
-    <input type="text" name="year" value="" size="5">
+    <input type="text" name="year" value="" size="5" />
     <select name="month" size="1">
         <option value="1">January</option>
         <option value="2">February</option>
@@ -381,23 +386,23 @@ positive.
         <option value="11">November</option>
         <option value="12">December</option>
     </select>
-    <input type="text" name="day" value="" size="3">
+    <input type="text" name="day" value="" size="3" />
 
-    <br>
+    <br />
 
-    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly">
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
 
-    <br>
-    <input type="text" name="wday" value="" size="9" class="ctr" readonly="readonly">
+    <br />
+    <input type="text" name="wday" value="" size="9" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcJulianCalendar();">
+<input type="button" value="Calculate" onclick="calcJulianCalendar();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -419,7 +424,7 @@ of 365.24219878 days.  The calendar thus accumulates one day of
 error with respect to the solar year every 128 years.
 Being a purely solar calendar, no attempt is made to synchronise the
 start of months to the phases of the Moon.
-<br clear="left">
+<br clear="left" />
 </p>
 
 <!--
@@ -450,13 +455,13 @@ start of months to the phases of the Moon.
 
 <table class="l">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
 <td align="center">
 
-    <input type="text" name="year" value="" size="5">
+    <input type="text" name="year" value="" size="5" />
     <select name="month" size="1">
         <option value="1">Nisan</option>
         <option value="2">Iyyar</option>
@@ -469,14 +474,14 @@ start of months to the phases of the Moon.
         <option value="9">Kislev</option>
         <option value="10">Teveth</option>
         <option value="11">Shevat</option>
-        
-        
-    <option>Adar</option></select>
-    <input type="text" name="day" value="" size="3">
+        <option value="12">Adar</option>
+        <option value="13">Veadar</option>
+    </select>
+    <input type="text" name="day" value="" size="3" />
 
-    <br>
+    <br />
 
-    <input type="text" name="leap" value="" size="36" class="ctr" readonly="readonly">
+    <input type="text" name="leap" value="" size="36" class="ctr" readonly="readonly" />
 
 </td>
 </tr>
@@ -485,23 +490,23 @@ start of months to the phases of the Moon.
     Hebrew month:
 </th>
 <td align="center">
-    <img src="./fourmilab_files/hebrew_month_8.gif" name="hebmonth" width="186" height="51" alt="">
+    <img src="figures/hebrew_month_0.gif" name="hebmonth" width="186" height="51" alt="" />
 
 </td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcHebrew();">
+<input type="button" value="Calculate" onclick="calcHebrew();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
 The Hebrew (or Jewish) calendar attempts to simultaneously
 maintain alignment between the months and the seasons and
-synchronise months with the Moon—it is thus deemed a
-“<em>luni-solar calendar</em>”.  In addition, there are constraints
+synchronise months with the Moon&mdash;it is thus deemed a
+&ldquo;<em>luni-solar calendar</em>&rdquo;.  In addition, there are constraints
 on which days of the week on which a year can begin and to shift
 otherwise required extra days to prior years to keep the
 length of the year within the prescribed bounds.
@@ -514,8 +519,8 @@ Years are classified as <em>common</em> (normal) or
 <em>embolismic</em> (leap) years which occur in a 19 year
 cycle in years 3, 6, 8, 11, 14, 17, and 19.  In an
 embolismic (leap) year, an extra <em>month</em> of 29 days,
-“Veadar” or “Adar&nbsp;II”, is added to the end of the year after
-the month “Adar”, which is designated “Adar&nbsp;I” in such
+&ldquo;Veadar&rdquo; or &ldquo;Adar&nbsp;II&rdquo;, is added to the end of the year after
+the month &ldquo;Adar&rdquo;, which is designated &ldquo;Adar&nbsp;I&rdquo; in such
 years.  Further, years may be <em>deficient</em>,
 <em>regular</em>, or <em>complete</em>, having respectively
 353, 354, or 355 days in a common year and 383, 384, or 385
@@ -539,7 +544,7 @@ of a year is 365.2468 days compared to the actual solar tropical
 year (time from equinox to equinox) of 365.24219 days, so
 the calendar accumulates one day of error with respect to
 the solar year every 216 years.
-<br clear="left">
+<br clear="left" />
 </p>
 
                      <h3><a name="islamic">Islamic Calendar</a></h3>
@@ -547,13 +552,13 @@ the solar year every 216 years.
 <form name="islamic" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
 <td align="center">
 
-    <input type="text" name="year" value="" size="5">
+    <input type="text" name="year" value="" size="5" />
     <select name="month" size="1">
         <option value="1">Muharram</option>
         <option value="2">Safar</option>
@@ -568,11 +573,11 @@ the solar year every 216 years.
         <option value="11">Dhu l-Qa`da</option>
         <option value="12">Dhu l-Hijja</option>
     </select>
-    <input type="text" name="day" value="" size="3">
+    <input type="text" name="day" value="" size="3" />
 
-    <br>
+    <br />
 
-    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly">
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
@@ -581,16 +586,16 @@ the solar year every 216 years.
     Weekday:
 </th>
 <td align="center">
-    <input type="text" name="wday" value="" size="18" class="ctr" readonly="readonly">
+    <input type="text" name="wday" value="" size="18" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcIslamic();">
+<input type="button" value="Calculate" onclick="calcIslamic();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -602,9 +607,9 @@ Days are considered to begin at sunset.  The calendar begins on
 Friday, July 16th, 622 <span class="bcad">C.E.</span> in the Julian calendar, Julian day
 1948439.5, the day of Muhammad's flight from Mecca to Medina, with
 sunset on the preceding day reckoned as the first day of the first
-month of year 1 A.H.—“<em lang="la" xml:lang="la">Anno
-Hegiræ</em>”—the Arabic word for
-“separate” or “go away”.  The names for the
+month of year 1 A.H.&mdash;&ldquo;<em lang="la" xml:lang="la">Anno
+Hegir&aelig;</em>&rdquo;&mdash;the Arabic word for
+&ldquo;separate&rdquo; or &ldquo;go away&rdquo;.  The names for the
 days are just their numbers: Sunday is the first day and Saturday the
 seventh; the week is considered to begin on Saturday.
 </p>
@@ -613,8 +618,8 @@ seventh; the week is considered to begin on Saturday.
 Each cycle of 30 years thus contains 19 normal years of 354
 days and 11 leap years of 355, so the average length of a
 year is therefore ((19 × 354) + (11 × 355)) / 30 =
-354.365… days, with a mean length of month of 1/12 this
-figure, or 29.53055… days, which closely approximates the
+354.365&hellip; days, with a mean length of month of 1/12 this
+figure, or 29.53055&hellip; days, which closely approximates the
 mean <em>synodic month</em> (time from new Moon to next new
 Moon) of 29.530588 days, with the calendar only slipping one
 day with respect to the Moon every 2525 years.  Since the calendar
@@ -628,7 +633,7 @@ The calendar presented here is the most commonly used
 civil calendar in the Islamic world; for religious purposes
 months are defined to start with the first observation of
 the crescent of the new Moon.
-<br clear="left">
+<br clear="left" />
 </p>
 
 
@@ -637,13 +642,13 @@ the crescent of the new Moon.
 <form name="persiana" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
 <td align="center">
 
-    <input type="text" name="year" value="" size="5">
+    <input type="text" name="year" value="" size="5" />
     <select name="month" size="1">
         <option value="1">Farvardin</option>
         <option value="2">Ordibehesht</option>
@@ -658,11 +663,11 @@ the crescent of the new Moon.
         <option value="11">Bahman</option>
         <option value="12">Esfand</option>
     </select>
-    <input type="text" name="day" value="" size="3">
+    <input type="text" name="day" value="" size="3" />
 
-    <br>
+    <br />
 
-    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly">
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
@@ -671,20 +676,20 @@ the crescent of the new Moon.
     Weekday:
 </th>
 <td align="center">
-    <input type="text" name="wday" value="" size="13" class="ctr" readonly="readonly">
+    <input type="text" name="wday" value="" size="13" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcPersiana();">
+<input type="button" value="Calculate" onclick="calcPersiana();" />
 <!--
 <input type="button" value="+" onclick="document.persiana.year.value++; calcPersiana();" />
 -->
 </td>
 
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -699,7 +704,7 @@ days in a normal year and 30 days in a leap year.
 <p>
 Each year begins on the day in which the March equinox occurs at or
 after solar noon at the reference longitude for Iran Standard Time
-(52°30'&nbsp;E).  Days begin at midnight in the standard time
+(52&deg;30'&nbsp;E).  Days begin at midnight in the standard time
 zone. There is no leap year rule;  366 day years do not recur in a
 regular pattern but instead occur whenever that number of days elapse
 between equinoxes at the reference meridian.  The calendar therefore
@@ -717,7 +722,7 @@ the criterion used in Iran today.  As this calendar is proleptic for all
 years prior to 1925&nbsp;<span class="bcad">C.E.</span>, historical
 considerations regarding the capitals of Persia and Iran do not
 seem to apply.
-<br clear="left">
+<br clear="left" />
 </p>
 
 <div style="margin-left: 2em; padding-left: 12px; padding-right: 12px; background-color: #FFFFC0; color: inherit;">
@@ -728,13 +733,13 @@ seem to apply.
 <form name="persian" action="javascript:return false;">
 <table class="r">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
 <td align="center">
 
-    <input type="text" name="year" value="" size="5">
+    <input type="text" name="year" value="" size="5" />
     <select name="month" size="1">
         <option value="1">Farvardin</option>
         <option value="2">Ordibehesht</option>
@@ -749,11 +754,11 @@ seem to apply.
         <option value="11">Bahman</option>
         <option value="12">Esfand</option>
     </select>
-    <input type="text" name="day" value="" size="3">
+    <input type="text" name="day" value="" size="3" />
 
-    <br>
+    <br />
 
-    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly">
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
@@ -762,16 +767,16 @@ seem to apply.
     Weekday:
 </th>
 <td align="center">
-    <input type="text" name="wday" value="" size="13" class="ctr" readonly="readonly">
+    <input type="text" name="wday" value="" size="13" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcPersian();">
+<input type="button" value="Calculate" onclick="calcPersian();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -807,7 +812,7 @@ this calendar accumulates an error of one day
 only every 3.8 million years.  As a purely solar
 calendar, months are not synchronised with the
 phases of the Moon.
-<br clear="right">
+<br clear="right" />
 </p>
 </div>
 
@@ -816,35 +821,35 @@ phases of the Moon.
 <form name="mayancount" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
     <b>Mayan Long Count</b>
-    <br>
+    <br />
 
-    <input type="text" name="baktun" value="" size="4">
+    <input type="text" name="baktun" value="" size="4" />
     <b>.</b>
-    <input type="text" name="katun" value="" size="3">
+    <input type="text" name="katun" value="" size="3" />
     <b>.</b>
-    <input type="text" name="tun" value="" size="3">
+    <input type="text" name="tun" value="" size="3" />
     <b>.</b>
-    <input type="text" name="uinal" value="" size="3">
+    <input type="text" name="uinal" value="" size="3" />
     <b>.</b>
-    <input type="text" name="kin" value="" size="3">
+    <input type="text" name="kin" value="" size="3" />
 
-<p>
+<p />
 
-    <b>Haab:</b>&nbsp;&nbsp;<input type="text" name="haab" value="" size="9" class="ctr" readonly="readonly">
-<br>
-    <b>Tzolkin:</b>&nbsp;&nbsp;<input type="text" name="tzolkin" value="" size="10" class="ctr" readonly="readonly">
-</p></td>
+    <b>Haab:</b>&nbsp;&nbsp;<input type="text" name="haab" value="" size="9" class="ctr" readonly="readonly" />
+<br />
+    <b>Tzolkin:</b>&nbsp;&nbsp;<input type="text" name="tzolkin" value="" size="10" class="ctr" readonly="readonly" />
+</td>
 </tr>
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcMayanCount();">
+<input type="button" value="Calculate" onclick="calcMayanCount();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -867,11 +872,11 @@ as opposed to names were used for all of the cycles.
 </p>
 
 <table class="r">
-<tbody><tr>
+<tr>
 <th>Cycle</th>
 <th>Composed of</th>
-<th>Total<br> Days</th>
-<th>Years<br>(approx.)</th>
+<th>Total<br /> Days</th>
+<th>Years<br />(approx.)</th>
 </tr>
 
 <tr>
@@ -937,7 +942,7 @@ as opposed to names were used for all of the cycles.
 <td align="center">63,081,429</td>
 </tr>
 
-</tbody></table>
+</table>
 
 <p>
 The Long Count calendar is organised into the
@@ -947,7 +952,7 @@ shorter cycle with the exception of the <em>tun</em>,
 which consists of 18 <em>uinal</em> of 20 days each.
 This results in a <em>tun</em> of 360 days, which maintains
 approximate alignment with the solar year over modest
-intervals—the calendar comes undone from the
+intervals&mdash;the calendar comes undone from the
 Sun 5 days every <em>tun</em>.
 </p>
 
@@ -961,7 +966,7 @@ the Gregorian calendar.  Speaking of apocalyptic events,
 it's amusing to observe that the longest of the cycles in
 the Mayan calendar, <em>alautun</em>, about 63 million
 years, is comparable to the 65 million years since the
-impact which brought down the curtain on the dinosaurs—an
+impact which brought down the curtain on the dinosaurs&mdash;an
 impact which occurred near the Yucatan peninsula where,
 almost an <em>alautun</em> later, the Mayan civilisation
 flourished.  If the universe is going to be destroyed and
@@ -1023,7 +1028,7 @@ to the solar year or lunar month.
 The Mayans frequently specified dates using <em>both</em> the Haab
 and Tzolkin calendars; dates of this form repeat only
 every 52 solar years.
-<br clear="all">
+<br clear="all" />
 </p>
 
 <!--
@@ -1170,13 +1175,13 @@ are identical to names in the 19 name cycles for days and months.
 <form name="indiancivilcalendar" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
 <td align="center">
 
-    <input type="text" name="year" value="" size="5">
+    <input type="text" name="year" value="" size="5" />
     <select name="month" size="1">
         <option value="1">Caitra</option>
         <option value="2">Vaisakha</option>
@@ -1191,25 +1196,25 @@ are identical to names in the 19 name cycles for days and months.
         <option value="11">Magha</option>
         <option value="12">Phalguna</option>
     </select>
-    <input type="text" name="day" value="" size="3">
+    <input type="text" name="day" value="" size="3" />
 
-    <br>
+    <br />
 
     Weekday: 
-    <input type="text" name="weekday" value="" size="15" class="ctr" readonly="readonly">
+    <input type="text" name="weekday" value="" size="15" class="ctr" readonly="readonly" />
 
-    <br>
+    <br />
 
-    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly">
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
 </td>
 </tr>
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcIndianCivilCalendar();">
+<input type="button" value="Calculate" onclick="calcIndianCivilCalendar();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -1246,7 +1251,7 @@ calendar differs from year 1 of the Gregorian, to
 determine whether a year in the Indian calendar is a leap
 year, add 78 to the year of the Saka era then
 apply the Gregorian calendar rule to the sum.
-<br clear="left">
+<br clear="left" />
 </p>
 
             <h3><a name="French_Republican">French Republican Calendar</a></h3>
@@ -1254,7 +1259,7 @@ apply the Gregorian calendar rule to the sum.
 <form name="french" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <th>
     Date:
 </th>
@@ -1262,11 +1267,11 @@ apply the Gregorian calendar rule to the sum.
 
     Année
 
-    <input type="text" name="an" value="" size="5">
+    <input type="text" name="an" value="" size="5" />
 
     de la République
 
-    <br>
+    <br />
 
     Mois de
 
@@ -1286,7 +1291,7 @@ apply the Gregorian calendar rule to the sum.
         <option value="13">(Sans-culottides)</option>
     </select>
 
-    <br>
+    <br />
 
     Décade
     <select name="decade" size="1">
@@ -1320,21 +1325,21 @@ apply the Gregorian calendar rule to the sum.
 
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcFrench();">
+<input type="button" value="Calculate" onclick="calcFrench();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
 The French Republican calendar was adopted by a
-<a href="http://www.fourmilab.ch/documents/calendar/fr_decret.html" target="_blank">decree</a> of <em lang="fr" xml:lang="fr">La
+<a href="fr_decret.html" target="_blank">decree</a> of <em lang="fr" xml:lang="fr">La
 Convention Nationale</em> on Gregorian date October 5, 1793
 and went into effect the following November 24th, on which
 day Fabre d'Églantine proposed to the <em lang="fr" xml:lang="fr">Convention</em>
 the names for the months.  It incarnates the revolutionary
-spirit of “Out with the old!  In with the relentlessly
-rational!” which later gave rise in 1795 to the metric
+spirit of &ldquo;Out with the old!  In with the relentlessly
+rational!&rdquo; which later gave rise in 1795 to the metric
 system of weights and measures which has proven more durable
 than the Republican calendar.
 </p>
@@ -1367,9 +1372,9 @@ The Republican calendar is rare in that it has no
 concept of a seven day week.  Each thirty day month
 is divided into three <em lang="fr" xml:lang="fr">décades</em> of ten days
 each, the last of which, <em lang="fr" xml:lang="fr">décadi</em>, was the
-day of rest.  (The word “<em lang="fr" xml:lang="fr">décade</em>” may
+day of rest.  (The word &ldquo;<em lang="fr" xml:lang="fr">décade</em>&rdquo; may
 confuse English speakers; the
-French noun denoting ten years is “<em lang="fr" xml:lang="fr">décennie</em>”.)
+French noun denoting ten years is &ldquo;<em lang="fr" xml:lang="fr">décennie</em>&rdquo;.)
 The names of days in the <em lang="fr" xml:lang="fr">décade</em> are derived from
 their number in the ten day sequence.  The five or
 six days of the <em lang="fr" xml:lang="fr">sans-culottides</em> do not bear
@@ -1390,7 +1395,7 @@ was again briefly used.
 </p>
 
 <p>
-The <a href="http://www.fourmilab.ch/documents/calendar/fr_decret.html" target="_blank">original decree</a>
+The <a href="fr_decret.html" target="_blank">original decree</a>
 which established the Republican calendar contained a
 contradiction: it defined the year as starting on the day
 of the true autumnal equinox in Paris, but further prescribed
@@ -1406,7 +1411,7 @@ we assume the equinox rule prevails, as a rigid four year
 cycle would be no more accurate than the Julian calendar, which
 couldn't possibly be the intent of its enlightened Republican
 designers.
-<br clear="left">
+<br clear="left" />
 </p>
 
       <h3><a name="ISO8601">ISO-8601 Week and Day, and Day of Year</a></h3>
@@ -1414,35 +1419,35 @@ designers.
 <form name="isoweek" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
 
-    Day <input type="text" name="day" value="" size="3"> of
-    week <input type="text" name="week" value="" size="3"> of
-    year <input type="text" name="year" value="" size="5">
+    Day <input type="text" name="day" value="" size="3" /> of
+    week <input type="text" name="week" value="" size="3" /> of
+    year <input type="text" name="year" value="" size="5" />
 </td>
 </tr>
 
 <tr>
 <td align="center">
-<input type="button" value="Calculate" onclick="calcIsoWeek();">
+<input type="button" value="Calculate" onclick="calcIsoWeek();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
 The
 <a href="http://www.iso.ch/" target="_blank">International Standards Organisation</a>
 (ISO) issued
-Standard ISO 8601, “Representation of Dates” in 1988,
+Standard ISO 8601, &ldquo;Representation of Dates&rdquo; in 1988,
 superseding the earlier ISO 2015.  The bulk of the standard
 consists of standards for representing dates in the
 Gregorian calendar including the highly recommended
-“<b>YYYY-MM-DD</b>” form which is unambiguous, free of cultural
+&ldquo;<b>YYYY-MM-DD</b>&rdquo; form which is unambiguous, free of cultural
 bias, can be sorted into order without rearrangement, and is
 Y9K compliant.  In addition, ISO 8601 formally defines the
-“calendar week” often encountered in commercial transactions
+&ldquo;calendar week&rdquo; often encountered in commercial transactions
 in Europe.  The first calendar week of a year: week 1, is
 that week which contains the first Thursday of the year (or,
 equivalently, the week which includes January 4th of the
@@ -1455,35 +1460,35 @@ December 29th of the previous year or as late as January
 4th of the present; the last calendar week can end as late
 as Sunday, January 3rd of the subsequent year.
 ISO 8601 dates in year, week, and day form are written
-with a “W” preceding the week number, which bears a leading
+with a &ldquo;W&rdquo; preceding the week number, which bears a leading
 zero if less than 10, for example February 29th, 2000
 is written as 2000-02-29 in year, month, day format and
 2000-W09-2 in year, week, day form; since the day number
 can never exceed 7, only a single digit is required.
 The hyphens may be elided for brevity and the day number
 omitted if not required.  You will frequently see date of
-manufacture codes such as “00W09” stamped on products; this
+manufacture codes such as &ldquo;00W09&rdquo; stamped on products; this
 is an abbreviation of 2000-W09, the ninth week of year 2000.
-<br clear="left">
+<br clear="left" />
 </p>
 
 <form name="isoday" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
 
-    Day <input type="text" name="day" value="" size="3"> of
-    year <input type="text" name="year" value="" size="5">
+    Day <input type="text" name="day" value="" size="3" /> of
+    year <input type="text" name="year" value="" size="5" />
 </td>
 </tr>
 
 <tr>
 <td align="center">
-<input type="button" value="Calculate" onclick="calcIsoDay();">
+<input type="button" value="Calculate" onclick="calcIsoDay();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -1492,7 +1497,7 @@ years have physical significance: days are defined by the
 rotation of the Earth, and years by its orbit about the Sun.
 Months, decoupled from the phases of the Moon, are but a
 memory of forgotten lunar calendars, while weeks of seven days
-are entirely a social construct—while most calendars in use
+are entirely a social construct&mdash;while most calendars in use
 today adopt a cycle of seven day names or numbers, calendars
 with name cycles ranging from four to sixty days have been
 used by other cultures in history.
@@ -1507,7 +1512,7 @@ December 31st.  This format makes it easy to do arithmetic
 with dates within a year, and only slightly more complicated
 for periods which span year boundaries.  You'll
 see this representation used in project planning and for specifying delivery
-dates.  ISO dates in this form are written as “<b>YYYY-DDD</b>”,
+dates.  ISO dates in this form are written as &ldquo;<b>YYYY-DDD</b>&rdquo;,
 for example 2000-060 for February 29th, 2000; leading zeroes
 are always written in the day number, but the hyphen may be
 omitted for brevity.
@@ -1520,7 +1525,7 @@ stored in a computer, of being sorted in date order
 by an alphanumeric sort of their textual representations.
 The ISO week and day and day of year calendars are
 derivative of the Gregorian calendar and share its accuracy.
-<br clear="left">
+<br clear="left" />
 </p>
 
                          <h3><a name="unixtime">Unix <tt>time()</tt> value</a></h3>
@@ -1528,19 +1533,19 @@ derivative of the Gregorian calendar and share its accuracy.
 <form name="unixtime" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
     <b>Unix time() value:</b>
 
-    <input type="text" name="time" value="" size="14">
+    <input type="text" name="time" value="" size="14" />
 </td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcUnixTime();">
+<input type="button" value="Calculate" onclick="calcUnixTime();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
@@ -1591,7 +1596,7 @@ a status, not the 32-bit time) and <tt>ctime()</tt> requires a
 pointer to its input argument.  Thanks to Eric Allman (author
 of <tt>sendmail</tt>) for
 pointing out these historical nuggets.
-<br clear="left">
+<br clear="left" />
 </p>
 
                          <h3><a name="excelserial1900">Excel Serial Day Number</a></h3>
@@ -1599,33 +1604,33 @@ pointing out these historical nuggets.
 <form name="excelserial1900" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
     <b><font size="+1">1900 Date System (PC)</font></b>
-    <br>
+    <br />
     <b>Excel serial day:</b>
 
-    <input type="text" name="day" value="" size="16">
+    <input type="text" name="day" value="" size="16" />
 </td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcExcelSerial1900();">
+<input type="button" value="Calculate" onclick="calcExcelSerial1900();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
 Spreadsheet calculations frequently need to do arithmetic with date
-and time quantities—for example, calculating the interest on a loan
+and time quantities&mdash;for example, calculating the interest on a loan
 with a given term.  When Microsoft Excel was introduced for the PC
-Windows platform, it defined dates and times as “serial values”, which
+Windows platform, it defined dates and times as &ldquo;serial values&rdquo;, which
 express dates and times as the number of days elapsed since midnight
 on January 1, 1900 with time given as a fraction of a day.  Midnight
 on January 1, 1900 is day 1.0 in this scheme.  Time zone is
 unspecified in Excel dates, with the <tt>NOW()</tt> function returning
-whatever the computer's clock is set to—in most cases local time, so
+whatever the computer's clock is set to&mdash;in most cases local time, so
 when combining data from machines in different time zones you usually
 need to add or subtract the bias, which can differ over the year due
 to observance of summer time.  Here we assume Excel dates represent
@@ -1643,19 +1648,19 @@ first look to make sure it doesn't contain one of those bonehead
 blunders characteristic of Microsoft.  As is usually the case,
 one doesn't have to look very far.  If you have a copy of PC
 Excel, fire it up, format a cell as containing a date, and
-type 60 into it: out pops “February 29, 1900”.  News apparently
-travels <em>very</em> slowly from Rome to Redmond—ever since
-Pope Gregory <a href="http://www.fourmilab.ch/documents/calendar/IG_Latin.html" target="_blank">revised the calendar</a>
+type 60 into it: out pops &ldquo;February 29, 1900&rdquo;.  News apparently
+travels <em>very</em> slowly from Rome to Redmond&mdash;ever since
+Pope Gregory <a href="IG_Latin.html" target="_blank">revised the calendar</a>
 in 1582, years divisible
 by 100 have <em>not</em> been leap years, and consequently the
 year 1900 contained no February 29th.  Due to this morsel of
 information having been lost somewhere between the Holy See and
-the <a href="http://www.fourmilab.ch/documents/top10.html">Infernal</a> Seattle monopoly,
+the <a href="/documents/top10.html">Infernal</a> Seattle monopoly,
 all Excel day numbers for days subsequent to February 28th, 1900
 are one day greater than the actual day count from January 1, 1900.
 Further, note that any computation of the number of days in
 a period which begins in January or February 1900 and ends in a
-subsequent month will be off by one—the day count will be one
+subsequent month will be off by one&mdash;the day count will be one
 greater than the actual number of days elapsed.
 </p>
 
@@ -1684,33 +1689,33 @@ versions of Excel did date arithmetic using 16 bit quantities
 and did not support day numbers greater than 65380 (December
 31, 2078); I do not know in which release of Excel this 
 limitation was remedied.
-<br clear="left">
+<br clear="left" />
 </p>
 
 <a name="excelserial1904"></a>
 <form name="excelserial1904" action="javascript:return false;">
 <table class="l">
 
-<tbody><tr>
+<tr>
 <td align="center">
     <b><font size="+1">1904 Date System (Macintosh)</font></b>
-    <br>
+    <br />
     <b>Excel serial day:</b>
 
-    <input type="text" name="day" value="" size="16">
+    <input type="text" name="day" value="" size="16" />
 </td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input type="button" value="Calculate" onclick="calcExcelSerial1904();">
+<input type="button" value="Calculate" onclick="calcExcelSerial1904();" />
 </td>
 </tr>
-</tbody></table>
+</table>
 </form>
 
 <p>
 Having saddled every PC Excel user with a defective date
-numbering scheme wasn't enough for Microsoft—nothing ever is.
+numbering scheme wasn't enough for Microsoft&mdash;nothing ever is.
 Next, they proceeded to come out with a Macintosh version
 of Excel which uses an <em>entirely different</em> day numbering
 system based on the MacOS native time format which counts
@@ -1725,7 +1730,7 @@ doesn't go back that far.  To compound the fun, you can now
 select either date system on either platform, so you can't be
 certain dates are compatible even when receiving data from
 another user with same kind of machine you're using.  I'm
-sure this was all done in the interest of the “efficiency”
+sure this was all done in the interest of the &ldquo;efficiency&rdquo;
 of which Microsoft is so fond.  As we all know, it would take a computer
 <em>almost forever</em> to add or subtract four in order to make everything
 seamlessly interchangeable.
@@ -1743,7 +1748,7 @@ versions of Excel did date arithmetic using 16 bit
 quantities and did not support day numbers greater than
 63918 (December 31, 2078); I do not know in which release of
 Excel this limitation was remedied.
-<br clear="left">
+<br clear="left" />
 </p>
 
 <script type="text/javascript" language="JavaScript">
@@ -1758,28 +1763,19 @@ Excel this limitation was remedied.
 
 <h3>References</h3>
 
-<table class="a">
-<tbody><tr>
-<td bgcolor="#E0E0E0" align="center">
-<font face="Arial, Helvetica, sans-serif" size="-1">
-Click on titles to order books on-line from
-<br> <a href="http://www.amazon.com/exec/obidos/redirect-home/fourmilabwwwfour" target="Amazon_Fourmilab"><img src="./fourmilab_files/amazon.gif" vspace="3" width="90" height="29" border="0" alt="Amazon.com."></a>
-</font>
-</td>
-</tr>
-</tbody></table>
-
 <dl>
 
 <dt>Meeus, Jean.
-<cite><a href="http://www.amazon.com/exec/obidos/ASIN/0943396611/fourmilabwwwfour" target="Amazon_Fourmilab">Astronomical Algorithms</a></cite> 2nd ed.
+<cite><a href="http://www.amazon.com/exec/obidos/ASIN/0943396611/fourmilabwwwfour"
+    target="Amazon_Fourmilab">Astronomical Algorithms</a></cite> 2nd ed.
 Richmond: Willmann-Bell, 1998.
 ISBN 0943396-61-1.</dt>
 <dd>The essential reference for computational positional
 astronomy.</dd>
 
 <dt>P. Kenneth Seidelmann (ed.)
-<cite><a href="http://www.amazon.com/exec/obidos/ASIN/1891389459/fourmilabwwwfour" target="Amazon_Fourmilab">Explanatory Supplement to
+<cite><a href="http://www.amazon.com/exec/obidos/ASIN/1891389459/fourmilabwwwfour"
+    target="Amazon_Fourmilab">Explanatory Supplement to
     	the Astronomical Almanac </a></cite>.
 Sausalito CA: University Science Books,
 [1992] 2005.  ISBN 1-891389-45-9.</dt>
@@ -1794,29 +1790,28 @@ Sausalito CA: University Science Books,
     <a href="http://www.imcce.fr/page.php?nav=fr/ephemerides/astronomie/Promenade/pages2/277.html" target="_blank">calendars</a>.</dt>
 
 </dl>
-<br clear="right">
+<br clear="right" />
 
-<hr>
-<p>
-</p><table align="right">
-<tbody><tr><td align="center">
-<form name="feedback" method="post" action="http://www.fourmilab.ch/cgi-bin/FeedbackForm.pl">
-<input type="hidden" name="pagetitle" value="&lt;cite&gt;Calendar Converter&lt;/cite&gt;">
-<input type="hidden" name="backlink" value="Back to &lt;cite&gt;Calendar Converter&lt;/cite&gt;">
-<input type="submit" value=" Send Feedback ">
+<hr />
+<p />
+<table align="right">
+<tr><td align="center">
+<form name="feedback" method="post" action="/cgi-bin/FeedbackForm.pl">
+<input type="hidden" name="pagetitle" value="&lt;cite&gt;Calendar Converter&lt;/cite&gt;" />
+<input type="hidden" name="backlink" value="Back to &lt;cite&gt;Calendar Converter&lt;/cite&gt;" />
+<input type="submit" value=" Send Feedback " />
 </form>
 </td></tr>
 <tr><td align="center">
-    <a href="http://validator.w3.org/check?uri=http://www.fourmilab.ch/documents/calendar/index.html" target="FourmilabValidation"><img src="./fourmilab_files/valid-xhtml10.png" alt="Valid XHTML 1.0" height="31" width="88" border="0"></a>
 </td></tr>
-</tbody></table>
+</table>
 <address>
-by <a href="http://www.fourmilab.ch/">John Walker</a><br>
+by <a href="/">John Walker</a><br />
 September, MMXV
 </address>
 <center>
 <em>This document is in the public domain.</em>
 </center>
+</body>
+</html>
 
-
-</body></html>
