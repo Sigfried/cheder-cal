@@ -46,28 +46,85 @@ class App extends Component {
   render() {
     let {jsDate, dates: {greg, jd}} = this.state
     let gcent = jsDate.getFullYear()
+    let heb = jd_to_hebrew(jd)
+    let [hy, hm, hd] = heb
+    let [gy, gm, gd] = _.at(greg,['year','month','day'])
     return (
       <div className="main">
         <h2>hello</h2>
         <div>
-          Date: {jsDate.toString()}
+          Javascript date: {jsDate.toString()}
         </div>
         <div>
-          Julian Date: {commify(jd)}
+          Gregorian date: {gm} / {gd} / {gy}
+        </div>
+        <div>
+          Julian day: {commify(jd)}
+        </div>
+        <div>
+          Hebrew date: {hm} / {hd} / {hy}
         </div>
         <br/>
-        <br/>
-        Change century — <span>6,600 BCE</span>{ }
-        <span>
-          <input  style={sliderStyle}
-                  type="range" min="-6600" max="5000" step="100"
-                  width="500px"
-                  name="gcent" 
-                  value={gcent}
-                  onChange={this.setGregCent}
-          />
-        </span>{ }
-        <span>5,000 CE</span>{ }
+        <div className="slider">
+          Change century 
+          <br/>
+          <span>6,600 BCE</span>{ }
+          <span>
+            <input  style={sliderStyle}
+                    type="range" min="-6600" max="5000" step="100"
+                    width="500px"
+                    name="gcent" 
+                    value={gcent}
+                    onChange={this.setGregCent}
+            />
+          </span>{ }
+          <span>5,000 CE</span>{ }
+        </div>
+        <div className="slider">
+          Change year 
+          <br/>
+          <span>6,600 BCE</span>{ }
+          <span>
+            <input  style={sliderStyle}
+                    type="range" min="-6600" max="5000" step="100"
+                    width="500px"
+                    name="gcent" 
+                    value={gcent}
+                    onChange={this.setGregCent}
+            />
+          </span>{ }
+          <span>5,000 CE</span>{ }
+        </div>
+        <div className="slider">
+          Change month 
+          <br/>
+          <span>6,600 BCE</span>{ }
+          <span>
+            <input  style={sliderStyle}
+                    type="range" min="-6600" max="5000" step="100"
+                    width="500px"
+                    name="gcent" 
+                    value={gcent}
+                    onChange={this.setGregCent}
+            />
+          </span>{ }
+          <span>5,000 CE</span>{ }
+        </div>
+        <div className="slider">
+          Change day 
+          <br/>
+          <span>6,600 BCE</span>{ }
+          <span>
+            <input  style={sliderStyle}
+                    type="range" min="-6600" max="5000" step="100"
+                    width="500px"
+                    name="gcent" 
+                    value={gcent}
+                    onChange={this.setGregCent}
+            />
+          </span>{ }
+          <span>5,000 CE</span>{ }
+        </div>
       </div>
     )
   }
