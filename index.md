@@ -120,8 +120,10 @@ We will be:
   - Had told LS to work on algorithm, but SSG needs to think more on it first
   
   
-#### Formulas  
+#### Formulas
+
 ##### Year Calcualtions
+
   ##### Rosh Hashanah Day Calulations
   
   
