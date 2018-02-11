@@ -118,3 +118,4 @@ We will be:
   - Everyone: follow pythonanytwhere tutorials.
   - JM: compare pythonanywhere to other python web platform, let SSG know which seems better
   - Had told LS to work on algorithm, but SSG needs to think more on it first
+  ##### Formulas  
