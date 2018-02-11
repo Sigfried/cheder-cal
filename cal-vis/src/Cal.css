@@ -1,0 +1,60 @@
+.main {
+  margin-left: 15%;
+  margin-right: 10%;
+  background-color: #FFFFFF;
+  color: #000000;
+  text-align: left;
+}
+
+dt {
+  margin-top: 1ex;
+}
+
+input.ctr {
+  text-align: center
+}
+
+p {
+  text-align: justify;
+}
+
+p.c {
+  text-align: center;
+}
+
+span.bcad {
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+
+table.a {
+  float: right;
+  margin-left: 12px;
+  width: 170px;
+}
+
+table.l {
+  border: 1px outset black;
+  float: left;
+  margin-right: 8px;
+  background-color: #D0D0D0;
+  color: #000000;
+  width: 45%;
+}
+
+table.l td, th {
+  border: 1px inset;
+  padding: 5px;
+}
+
+table.r {
+  border: 1px outset black;
+  float: right;
+  margin-left: 8px;
+  background-color: #D0D0D0;
+  color: #000000;
+}
+
+table.r td, th {
+  border: 1px inset;
+}
