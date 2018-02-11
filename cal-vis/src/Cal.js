@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './Cal.css';
 import _ from 'supergroup'
-import d3 from 'd3'
+import {format} from 'd3-format'
 
 // https://github.com/mourner/suncalc
 //import SunCalc from 'suncalc'
@@ -11,7 +11,7 @@ import d3 from 'd3'
 //
 //
 
-export const commify = d3.format(',')
+export const commify = format(',')
 const sliderStyle = {
   width: '500px',
   height: '20px',
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   render() {
-    let {jsDate, jd, greg} = this.state
+    let {jsDate, dates: {greg, jd}} = this.state
     let gcent = jsDate.getFullYear()
     return (
       <div className="main">
@@ -57,17 +57,17 @@ class App extends Component {
         </div>
         <br/>
         <br/>
-        Change century — <span>5,000 BCE</span>{ }
+        Change century — <span>6,600 BCE</span>{ }
         <span>
           <input  style={sliderStyle}
-                  type="range" min="-5000" max="5000" step="100"
+                  type="range" min="-6600" max="5000" step="100"
                   width="500px"
                   name="gcent" 
                   value={gcent}
                   onChange={this.setGregCent}
           />
         </span>{ }
-        <span>5000 CE</span>{ }
+        <span>5,000 CE</span>{ }
       </div>
     )
   }
