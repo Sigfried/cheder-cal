@@ -124,6 +124,6 @@ We will be:
 
 ##### Year Calcualtions
 
-  ##### Rosh Hashanah Day Calulations
+##### Rosh Hashanah Day Calulations
   
   
