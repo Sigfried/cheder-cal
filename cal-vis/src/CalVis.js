@@ -27,21 +27,24 @@ function customTitleForValue(value) {
 }
 export default class CalVis extends Component {
   render() {
-    let {calHeatmapProps={}, centerDate=new Date(), } = this.props
-    let startDate = H.shiftDate(centerDate, -400)
-    let endDate = H.shiftDate(centerDate, 400)
+    let {calHeatmapProps={}, centerDate=new Date(), jd, heb} = this.props
+    let window = [-10, 30]
+    let startDate = H.shiftDate(centerDate, window[0])
+    let endDate = H.shiftDate(centerDate, window[1])
     calHeatmapProps = Object.assign( {
             //horizontal:false,
             startDate,
             endDate,
             values: 
-              _.range(801).map(
+              _.range(window[1] - window[0] + 1).map(
                 i=>{
                   let date = H.shiftDate(startDate,i)
                   return {
                       date: H.shiftDate(startDate, i),count:'0',
                       mday: date.getDate(),
-                      mdays: new Date(date.getFullYear(), date.getMonth()+1, 0)
+                      mdays: new Date(date.getFullYear(), date.getMonth()+1, 0),
+                      jd: jd + i,
+                      heb: H.jd_to_hebrew(jd + i),
                     }
                 }),
         }, calHeatmapProps)
