@@ -192,7 +192,7 @@ const gDate = (value, index, cal, d={}, props={}) => {
 const moons = (value, index, cal, d={}, props={}) => {
   return (
     <g key={'t'+index} >
-    {H.moon()}
+    {H.moon(value.date)}
     </g>
   )
 }
