@@ -13,6 +13,9 @@ function customOnClick(value) {
     alert(`Clicked on ${value.date.toDateString()} with value ${value.count}`);
   }
 }
+function classForValue(value) {
+  return githubClassForValue(value)
+}
 function githubClassForValue(value) {
   if (!value) {
     return 'color-empty';
@@ -21,10 +24,6 @@ function githubClassForValue(value) {
 }
 function customTitleForValue(value) {
   return value ? `You're hovering over ${value.date.toDateString()} with value ${value.count}` : null;
-}
-function textContent(value) {
-  //console.log(value,index)
-  return value.date.getDate()
 }
 export default class CalVis extends Component {
   render() {
@@ -35,31 +34,99 @@ export default class CalVis extends Component {
             //horizontal:false,
             startDate,
             endDate,
-            values: _.range(801).map(i=>({date: H.shiftDate(startDate, i),count:'0'})),
+            values: 
+              _.range(801).map(
+                i=>{
+                  let date = H.shiftDate(startDate,i)
+                  return {
+                      date: H.shiftDate(startDate, i),count:'0',
+                      mday: date.getDate(),
+                      mdays: new Date(date.getFullYear(), date.getMonth()+1, 0)
+                    }
+                }),
         }, calHeatmapProps)
     console.log(calHeatmapProps)
     const customTooltipDataAttrs = { 'data-toggle': 'tooltip' };
     return  <div style={{clear:'both'}}>
               <br/>
-              <div style={{width:300, float:'left',clear:'left'}}>
+                {"\u2651"}
+                {"\u2652"}
+                {"\u2653"}
+                {"\u2648"}
+                {"\u2649"}
+                {"\u264A"}
+                {"\u264B"}
+                {"\u264C"}
+                {"\u264D"}
+                {"\u264E"}
+                {"\u264F"}
+                {"\u2650"}
+                {"\u2651"}
+{"\uD83C\uDF11"}
+{"\uD83C\uDF12"}
+{"\uD83C\uDF13"}
+{"\uD83C\uDF14"}
+{"\uD83C\uDF15"}
+{"\uD83C\uDF16"}
+{"\uD83C\uDF17"}
+{"\uD83C\uDF18"}
+
+    
+
+              <div className='cal-vert'>
                   <CalendarHeatmap {...calHeatmapProps} 
-                      classForValue={githubClassForValue}
+                      classForValue={classForValue}
                       tooltipDataAttrs={customTooltipDataAttrs}
                       titleForValue={customTitleForValue}
                       onClick={customOnClick}
-                      textContent={textContent}
+                      //textContent={textContent}
                       horizontal={false}
+                      squareContents={
+                        (value, index, cal, d={}, props={}) => (
+                          <g>
+                            {squares(value, index, cal, d, props)}
+                            {gDate(value, index, cal, d, props)}
+                          </g>
+                        )
+                      }
                   />
               </div>
-              <div style={{width:300, float:'left',clear:'right'}}>
+              <div className='cal-vert'>
                   <CalendarHeatmap {...calHeatmapProps} 
                       type='hebrew'
-                      //classForValue={githubClassForValue}
+                      //classForValue={classForValue}
                       //tooltipDataAttrs={customTooltipDataAttrs}
                       //titleForValue={customTitleForValue}
                       onClick={customOnClick}
-                      textContent={textContent}
+                      //textContent={textContent}
                       horizontal={false}
+                      squareContents={
+                        (value, index, cal, d={}, props={}) => (
+                          <g>
+                            {squares(value, index, cal, d, props)}
+                            {gDate(value, index, cal, d, props)}
+                          </g>
+                        )
+                      }
+                  />
+              </div>
+              <div className='cal-vert'>
+                  <CalendarHeatmap {...calHeatmapProps} 
+                      type='moon'
+                      //classForValue={classForValue}
+                      //tooltipDataAttrs={customTooltipDataAttrs}
+                      //titleForValue={customTitleForValue}
+                      onClick={customOnClick}
+                      //textContent={textContent}
+                      horizontal={false}
+                      squareContents={
+                        (value, index, cal, d={}, props={}) => (
+                          <g>
+                            {squares(value, index, cal, d, props)}
+                            {moons(value, index, cal, d, props)}
+                          </g>
+                        )
+                      }
                   />
               </div>
               <br/>
@@ -67,6 +134,81 @@ export default class CalVis extends Component {
 
   }
 }
+
+
+const squares = (value, index, cal, d={}, props={}) => {
+  return (
+    <g>
+      <rect
+        width={d.ss}
+        height={d.ss}
+        className={cal.getClassNameForIndex(index)}
+        onClick={cal.handleClick.bind(cal, value)}
+        onMouseOver={e => cal.handleMouseOver(e, value)}
+        onMouseLeave={e => cal.handleMouseLeave(e, value)}
+        {...cal.getTooltipDataAttrsForIndex(index)}
+      >
+        <title>{cal.getTitleForIndex(index)}</title>
+      </rect>
+      { value.mday === 1
+          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
+          : ''
+      }
+      { value.mday <= 7
+          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
+          : ''
+      }
+      { value.mday === 1
+          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
+          : ''
+      }
+      { value.mday <= 7
+          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
+          : ''
+      }
+    </g>
+  )
+}
+const gDate = (value, index, cal, d={}, props={}) => {
+  return (
+    <text
+      key={'t'+index}
+      style={{fontSize:d.ss*.4}}
+      width={d.ss * .8}
+      height={d.ss * .8}
+      x={d.ss * .5}
+      y={d.ss * .5}
+      textAnchor='middle'
+      alignmentBaseline='middle'
+      onClick={cal.handleClick.bind(cal, value)}
+      onMouseOver={e => cal.handleMouseOver(e, value)}
+      onMouseLeave={e => cal.handleMouseLeave(e, value)}
+      {...cal.getTooltipDataAttrsForIndex(index)}
+    >
+      {value.date.getDate()}
+    </text>
+  )
+}
+const moons = (value, index, cal, d={}, props={}) => {
+  return (
+    <g key={'t'+index} >
+    {H.moon()}
+    </g>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
