@@ -94,7 +94,7 @@ export default class CalVis extends Component {
               <div className='cal-vert'>
                   <CalendarHeatmap {...calHeatmapProps} 
                       type='hebrew'
-                      //classForValue={classForValue}
+                      classForValue={classForValue}
                       //tooltipDataAttrs={customTooltipDataAttrs}
                       //titleForValue={customTitleForValue}
                       onClick={customOnClick}
@@ -113,7 +113,7 @@ export default class CalVis extends Component {
               <div className='cal-vert'>
                   <CalendarHeatmap {...calHeatmapProps} 
                       type='moon'
-                      //classForValue={classForValue}
+                      classForValue={classForValue}
                       //tooltipDataAttrs={customTooltipDataAttrs}
                       //titleForValue={customTitleForValue}
                       onClick={customOnClick}
