@@ -28,7 +28,7 @@ function customTitleForValue(value) {
 export default class CalVis extends Component {
   render() {
     let {calHeatmapProps={}, centerDate=new Date(), jd, heb} = this.props
-    let window = [-10, 30]
+    let window = [-130, 150]
     let startDate = H.shiftDate(centerDate, window[0])
     let endDate = H.shiftDate(centerDate, window[1])
     calHeatmapProps = Object.assign( {
@@ -87,8 +87,8 @@ export default class CalVis extends Component {
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
-                            {squares(value, index, cal, d, props)}
-                            {gDate(value, index, cal, d, props)}
+                            {squares(value, index, value.mday, cal, d, props)}
+                            {dateText(value, index, value.mday, cal, d, props)}
                           </g>
                         )
                       }
@@ -106,8 +106,8 @@ export default class CalVis extends Component {
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
-                            {squares(value, index, cal, d, props)}
-                            {gDate(value, index, cal, d, props)}
+                            {squares(value, index, value.heb[2], cal, d, props)}
+                            {dateText(value, index, value.heb[2], cal, d, props)}
                           </g>
                         )
                       }
@@ -125,7 +125,7 @@ export default class CalVis extends Component {
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
-                            {squares(value, index, cal, d, props)}
+                            {squares(value, index, value.heb[2], cal, d, props)}
                             {moons(value, index, cal, d, props)}
                           </g>
                         )
@@ -139,7 +139,8 @@ export default class CalVis extends Component {
 }
 
 
-const squares = (value, index, cal, d={}, props={}) => {
+const squares = (value, index, mday, cal, d={}, props={}) => {
+  let [hy, hm, hd] = value.heb
   return (
     <g>
       <rect
@@ -152,27 +153,28 @@ const squares = (value, index, cal, d={}, props={}) => {
         {...cal.getTooltipDataAttrsForIndex(index)}
       >
         <title>{cal.getTitleForIndex(index)}</title>
+        {/*FIX*/}
       </rect>
-      { value.mday === 1
+      { mday === 1
           ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
           : ''
       }
-      { value.mday <= 7
+      { mday <= 7
           ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
           : ''
       }
-      { value.mday === 1
+      { mday === 1
           ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
           : ''
       }
-      { value.mday <= 7
+      { mday <= 7
           ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
           : ''
       }
     </g>
   )
 }
-const gDate = (value, index, cal, d={}, props={}) => {
+const dateText = (value, index, mday, cal, d={}, props={}) => {
   return (
     <text
       key={'t'+index}
@@ -188,7 +190,7 @@ const gDate = (value, index, cal, d={}, props={}) => {
       onMouseLeave={e => cal.handleMouseLeave(e, value)}
       {...cal.getTooltipDataAttrsForIndex(index)}
     >
-      {value.date.getDate()}
+      {mday}
     </text>
   )
 }

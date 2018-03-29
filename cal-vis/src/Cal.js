@@ -88,6 +88,9 @@ class App extends Component {
           <div>
             Hebrew date: {hm} / {hd} / {hy}
           </div>
+          <div>
+            Moon phase: {H.moon_phase(jsDate)} {H.moon(jsDate, 20)}
+          </div>
           <br/>
           <div className="slider">
             Change century  &nbsp;&nbsp; {Math.floor(jsDate.getFullYear() / 100) * 100}
