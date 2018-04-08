@@ -1,12 +1,15 @@
 
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
+import PropTypes from 'prop-types';
 //import CalendarHeatmap from 'react-calendar-heatmap'
 import CalendarHeatmap from './react-calendar-heatmap/src'
 import * as H from './react-calendar-heatmap/src'
 //import * as H from './react-calendar-heatmap/src/helpers'
 import './react-calendar-heatmap/src/styles.css'
+import {format} from 'd3-format'
 import _ from 'supergroup'
 //import * as d3 from 'd3'
+import RSTooltip from './Tooltip'
 
 function customOnClick(value) {
   if (value) {
@@ -26,6 +29,17 @@ function customTitleForValue(value) {
   return value ? `You're hovering over ${value.date.toDateString()} with value ${value.count}` : null;
 }
 export default class CalVis extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+    this.hover = this.hover.bind(this)
+  }
+  hover(evt, value, cal) {
+    debugger
+    if (this.state.hoverDate !== value) {
+      this.setState({ hoverDate: value })
+    }
+  }
   render() {
     let {calHeatmapProps={}, centerDate=new Date(), jd, heb} = this.props
     let window = [-130, 150]
@@ -51,6 +65,18 @@ export default class CalVis extends Component {
     console.log(calHeatmapProps)
     const customTooltipDataAttrs = { 'data-toggle': 'tooltip' };
     return  <div style={{clear:'both'}}>
+              <RSTooltip 
+                  popperContent={<div>POPPER!!!! <DateDesc jsDate={this.state.hoverDate || centerDate} /></div>}
+                  targetContent={<div>Here's the date: {centerDate.toString()}</div>}
+                  targetProps={{
+                    style:{ width: 620, height: 120, background: '#b4da55', }
+                  }}
+                  popperProps={{
+                    style:{ width: 620, height: 120, background: '#b4da55', }
+                  }}
+              />
+              <br/>
+              <br/>
               <br/>
                 {"\u2651"}
                 {"\u2652"}
@@ -73,10 +99,14 @@ export default class CalVis extends Component {
 {"\uD83C\uDF16"}
 {"\uD83C\uDF17"}
 {"\uD83C\uDF18"}
+<br/>
+<br/>
+<br/>
 
     
 
               <div className='cal-vert'>
+                  Gregorian<br/>
                   <CalendarHeatmap {...calHeatmapProps} 
                       classForValue={classForValue}
                       tooltipDataAttrs={customTooltipDataAttrs}
@@ -95,6 +125,7 @@ export default class CalVis extends Component {
                   />
               </div>
               <div className='cal-vert'>
+                  Hebrew<br/>
                   <CalendarHeatmap {...calHeatmapProps} 
                       type='hebrew'
                       classForValue={classForValue}
@@ -114,6 +145,7 @@ export default class CalVis extends Component {
                   />
               </div>
               <div className='cal-vert'>
+                  Moon<br/>
                   <CalendarHeatmap {...calHeatmapProps} 
                       type='moon'
                       classForValue={classForValue}
@@ -148,8 +180,8 @@ const squares = (value, index, mday, cal, d={}, props={}) => {
         height={d.ss}
         className={cal.getClassNameForIndex(index)}
         onClick={cal.handleClick.bind(cal, value)}
-        onMouseOver={e => cal.handleMouseOver(e, value)}
-        onMouseLeave={e => cal.handleMouseLeave(e, value)}
+        onMouseOver={e => cal.handleMouseOver(e, value, this.hover)}
+        onMouseLeave={e => cal.handleMouseLeave(e, value, this.hover)}
         {...cal.getTooltipDataAttrsForIndex(index)}
       >
         <title>{cal.getTitleForIndex(index)}</title>
@@ -186,8 +218,9 @@ const dateText = (value, index, mday, cal, d={}, props={}) => {
       textAnchor='middle'
       alignmentBaseline='middle'
       onClick={cal.handleClick.bind(cal, value)}
-      onMouseOver={e => cal.handleMouseOver(e, value)}
-      onMouseLeave={e => cal.handleMouseLeave(e, value)}
+      onMouseOver={e => cal.handleMouseOver(e, value, this.hover)}
+      onMouseLeave={e => cal.handleMouseLeave(e, value, this.hover)}
+      
       {...cal.getTooltipDataAttrsForIndex(index)}
     >
       {mday}
@@ -291,3 +324,41 @@ function d3_bostock_version() {
 }
 */
 
+export class DateDesc extends Component {
+  render() {
+    let {jsDate, } = this.props
+    let [gy, gm, gd] = splitGregDate(jsDate)
+    let jd = H.gregorian_to_jd(gy, gm, gd)
+    let heb = H.jd_to_hebrew(jd)
+    let [hy, hm, hd] = heb
+    return (
+      <div className="main">
+        <div style={{clear:'both'}} >
+          <div>
+            Javascript date: {jsDate.toString()}
+          </div>
+          <div>
+            Gregorian date: {gm + 1} / {gd} / {gy}
+          </div>
+          <div>
+            Julian day: {commify(jd)}
+          </div>
+          <div>
+            Hebrew date: {hm} / {hd} / {hy}
+          </div>
+          <div>
+            Moon phase: {H.moon_phase(jsDate)} {H.moon(jsDate, 20)}
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+export const commify = format(',')
+export function splitGregDate(date) {
+  return [
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+  ]
+}

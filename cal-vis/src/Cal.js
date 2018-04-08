@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './Cal.css';
 import _ from 'supergroup'
-import {format} from 'd3-format'
-import CalVis from './CalVis'
+import CalVis, {DateDesc, commify, splitGregDate} from './CalVis'
 import * as H from './react-calendar-heatmap/src'
 
 // https://github.com/mourner/suncalc
@@ -13,17 +12,9 @@ import * as H from './react-calendar-heatmap/src'
 //
 //
 
-export const commify = format(',')
 const sliderStyle = {
   width: '500px',
   height: '20px',
-}
-function splitGregDate(date) {
-  return [
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate(),
-  ]
 }
 class App extends Component {
   constructor(props) {
@@ -76,22 +67,7 @@ class App extends Component {
     return (
       <div className="main">
         <div style={{clear:'both'}} >
-          <div>
-            Javascript date: {jsDate.toString()}
-          </div>
-          <div>
-            Gregorian date: {gm + 1} / {gd} / {gy}
-          </div>
-          <div>
-            Julian day: {commify(jd)}
-          </div>
-          <div>
-            Hebrew date: {hm} / {hd} / {hy}
-          </div>
-          <div>
-            Moon phase: {H.moon_phase(jsDate)} {H.moon(jsDate, 20)}
-          </div>
-          <br/>
+          <DateDesc jsDate={jsDate} />
           <div className="slider">
             Change century  &nbsp;&nbsp; {Math.floor(jsDate.getFullYear() / 100) * 100}
             <br/>
@@ -165,6 +141,7 @@ class App extends Component {
     )
   }
 }
+
 
 export default App
 /*  setDateToToday  --  Preset the fields in
