@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './Cal.css';
 import _ from 'supergroup'
 import CalVis, {DateDesc, commify, splitGregDate} from './CalVis'
-import * as H from './react-calendar-heatmap/src'
+import * as H from './react-calendar-heatmap-index'
 
 // https://github.com/mourner/suncalc
 //import SunCalc from 'suncalc'

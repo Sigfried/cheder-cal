@@ -2,10 +2,10 @@
 import React, { Component, PureComponent } from 'react'
 import PropTypes from 'prop-types';
 //import CalendarHeatmap from 'react-calendar-heatmap'
-import CalendarHeatmap from './react-calendar-heatmap/src'
-import * as H from './react-calendar-heatmap/src'
+import CalendarHeatmap from './react-calendar-heatmap-index'
+import * as H from './react-calendar-heatmap-index'
 //import * as H from './react-calendar-heatmap/src/helpers'
-import './react-calendar-heatmap/src/styles.css'
+import './react-calendar-heatmap-styles.css'
 import {format} from 'd3-format'
 import _ from 'supergroup'
 //import * as d3 from 'd3'
@@ -33,24 +33,68 @@ export default class CalVis extends Component {
     super(props)
     this.state = {}
     this.hover = this.hover.bind(this)
+    this.squares = this.squares.bind(this)
   }
   hover(evt, value, cal) {
-    debugger
     if (this.state.hoverDate !== value) {
-      this.setState({ hoverDate: value })
+      this.setState({ hoverValue: value })
     }
+  }
+  squares (value, index, mday, cal, d={}, props={}) {
+    let [hy, hm, hd] = value.heb
+    //if (cal !== this) debugger
+    return (
+      <g>
+        <rect
+          width={d.ss}
+          height={d.ss}
+          className={cal.getClassNameForIndex(index)}
+          onClick={cal.handleClick.bind(cal, value)}
+          onMouseOver={e => cal.handleMouseOver(e, value, this.hover,
+          
+            // send this square to target somehow
+          
+          )}
+          onMouseLeave={e => cal.handleMouseLeave(e, value, this.hover)}
+          {...cal.getTooltipDataAttrsForIndex(index)}
+        >
+          <title>{cal.getTitleForIndex(index)}</title>
+          {/*FIX*/}
+        </rect>
+        { mday === 1
+            ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
+            : ''
+        }
+        { mday <= 7
+            ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
+            : ''
+        }
+        { mday === 1
+            ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
+            : ''
+        }
+        { mday <= 7
+            ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
+            : ''
+        }
+      </g>
+    )
   }
   render() {
     let {calHeatmapProps={}, centerDate=new Date(), jd, heb} = this.props
-    let window = [-130, 150]
+    let window = [-230, 250]
     let startDate = H.shiftDate(centerDate, window[0])
     let endDate = H.shiftDate(centerDate, window[1])
+    let junk = H
+    console.log(junk,H)
     calHeatmapProps = Object.assign( {
             //horizontal:false,
-            startDate,
-            endDate,
+            //startDate,
+            //endDate,
+            startDate: H.shiftDate(startDate, 100),
+            endDate: H.shiftDate(endDate, -100),
             values: 
-              _.range(window[1] - window[0] + 1).map(
+              _.range(window[1] - window[0]).map(
                 i=>{
                   let date = H.shiftDate(startDate,i)
                   return {
@@ -66,7 +110,7 @@ export default class CalVis extends Component {
     const customTooltipDataAttrs = { 'data-toggle': 'tooltip' };
     return  <div style={{clear:'both'}}>
               <RSTooltip 
-                  popperContent={<div>POPPER!!!! <DateDesc jsDate={this.state.hoverDate || centerDate} /></div>}
+                  popperContent={<div>POPPER!!!! <DateDesc jsDate={(this.state.hoverValue && this.state.hoverValue.date) || centerDate} /></div>}
                   targetContent={<div>Here's the date: {centerDate.toString()}</div>}
                   targetProps={{
                     style:{ width: 620, height: 120, background: '#b4da55', }
@@ -75,6 +119,10 @@ export default class CalVis extends Component {
                     style:{ width: 620, height: 120, background: '#b4da55', }
                   }}
               />
+              <br/>
+              <br/>
+              <br/>
+              <br/>
               <br/>
               <br/>
               <br/>
@@ -117,7 +165,7 @@ export default class CalVis extends Component {
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
-                            {squares(value, index, value.mday, cal, d, props)}
+                            {this.squares(value, index, value.mday, cal, d, props)}
                             {dateText(value, index, value.mday, cal, d, props)}
                           </g>
                         )
@@ -137,7 +185,7 @@ export default class CalVis extends Component {
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
-                            {squares(value, index, value.heb[2], cal, d, props)}
+                            {this.squares(value, index, value.heb[2], cal, d, props)}
                             {dateText(value, index, value.heb[2], cal, d, props)}
                           </g>
                         )
@@ -157,7 +205,7 @@ export default class CalVis extends Component {
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
-                            {squares(value, index, value.heb[2], cal, d, props)}
+                            {this.squares(value, index, value.heb[2], cal, d, props)}
                             {moons(value, index, cal, d, props)}
                           </g>
                         )
@@ -171,46 +219,11 @@ export default class CalVis extends Component {
 }
 
 
-const squares = (value, index, mday, cal, d={}, props={}) => {
-  let [hy, hm, hd] = value.heb
-  return (
-    <g>
-      <rect
-        width={d.ss}
-        height={d.ss}
-        className={cal.getClassNameForIndex(index)}
-        onClick={cal.handleClick.bind(cal, value)}
-        onMouseOver={e => cal.handleMouseOver(e, value, this.hover)}
-        onMouseLeave={e => cal.handleMouseLeave(e, value, this.hover)}
-        {...cal.getTooltipDataAttrsForIndex(index)}
-      >
-        <title>{cal.getTitleForIndex(index)}</title>
-        {/*FIX*/}
-      </rect>
-      { mday === 1
-          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
-          : ''
-      }
-      { mday <= 7
-          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
-          : ''
-      }
-      { mday === 1
-          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs/2} ${-d.gs/2} V ${d.ss + d.gs}`} />
-          : ''
-      }
-      { mday <= 7
-          ? <path fill="transparent" strokeWidth={d.gs} stroke="#449" d={`M ${-d.gs} ${-d.gs/2} H ${d.ss}`} />
-          : ''
-      }
-    </g>
-  )
-}
 const dateText = (value, index, mday, cal, d={}, props={}) => {
   return (
     <text
       key={'t'+index}
-      style={{fontSize:d.ss*.4}}
+      style={{fontSize:d.ss*.4, pointerEvents:'none', }}
       width={d.ss * .8}
       height={d.ss * .8}
       x={d.ss * .5}

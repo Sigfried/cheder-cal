@@ -40,7 +40,6 @@ class StandaloneExample extends PureComponent {
     // put the ref on the target itself?
     return (
       <div>
-        <h2>Toggleable Popper Example</h2>
         <Manager>
           <Target {...targetProps}
             onMouseEnter={this.openPopper}
