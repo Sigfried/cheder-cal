@@ -7,7 +7,8 @@ import _ from 'supergroup'
 export const MILLISECONDS_IN_ONE_DAY = 24 * 60 * 60 * 1000;
 export const DAYS_IN_WEEK = 7;
 export const GREG_MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-export const HEB_MONTH_LABELS = ['נִיסָן', 'אִייָר', 'סִיוָן', 'תמוז', 'אָב', 'אֱלוּל', 'תִּשְׁרֵי', 'חֶשְׁוָן', 'כִּסְלֵו', 'טֵבֵת', 'שְׁבָט', 'אֲדָר']
+export const HEB_MONTH_HEB_LABELS = ['נִיסָן', 'אִייָר', 'סִיוָן', 'תמוז', 'אָב', 'אֱלוּל', 'תִּשְׁרֵי', 'חֶשְׁוָן', 'כִּסְלֵו', 'טֵבֵת', 'שְׁבָט', 'אֲדָר', 'אדר ב']
+export const HEB_MONTH_ENG_LABELS = ['Nisan', 'Iyyar', 'Sivan', 'Tammuz', 'Av', 'Elul', 'Tishri', 'Heshvan', 'Kislev', 'Teveth', 'Shevat', 'Adar', 'Veadar']
 // adar I:  אדר א', adar II: אדר ב'
 export const DAY_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -59,13 +60,13 @@ export const monthLabel = (num, type='gregorian', base=0) => {
     return GREG_MONTH_LABELS[num]
   }
   if (type === 'hebrew') {
-    return HEB_MONTH_LABELS[num]
+    return HEB_MONTH_ENG_LABELS[num]
   }
 }
 
 const SQUARE_SIZE = 10;
 const MONTH_LABEL_GUTTER_SIZE = 0;
-const CSS_PSEDUO_NAMESPACE = 'react-calendar-heatmap-';
+const CSS_PSEUDO_NAMESPACE = 'react-calendar-heatmap-';
 
 class CalendarHeatmap extends React.Component {
   constructor(props) {
@@ -229,18 +230,24 @@ class CalendarHeatmap extends React.Component {
     return null;
   }
 
+  /*
   getTransformForMonthLabels() {
     if (this.latestProps.horizontal) {
       return `translate(${this.getWeekdayLabelSize()}, 0)`;
     }
     return `translate(${this.getWeekWidth() + MONTH_LABEL_GUTTER_SIZE}, ${this.getWeekdayLabelSize()})`;
   }
+  */
+  getTransformForMonthLabel() {
+    return `rotate(270) translate(0, -25)`
+    //return `translate(${this.getWeekWidth() + MONTH_LABEL_GUTTER_SIZE}, 0)`;
+  }
 
   getTransformForAllWeeks() {
     if (this.latestProps.horizontal) {
       return `translate(${this.getWeekdayLabelSize()}, ${this.getMonthLabelSize()})`;
     }
-    return `translate(0, ${this.getWeekdayLabelSize()})`;
+    return `translate(30, ${this.getWeekdayLabelSize()})`;
   }
 
   getViewBox() {
@@ -328,7 +335,7 @@ class CalendarHeatmap extends React.Component {
 
   renderWeek(weekIndex) {
     return (
-      <g key={weekIndex} transform={this.getTransformForWeek(weekIndex)} className={`${CSS_PSEDUO_NAMESPACE}week`}>
+      <g key={weekIndex} transform={this.getTransformForWeek(weekIndex)} className={`${CSS_PSEUDO_NAMESPACE}week`}>
         {_.range(DAYS_IN_WEEK).map(dayIndex => this.renderSquare(dayIndex, (weekIndex * DAYS_IN_WEEK) + dayIndex))}
       </g>
     );
@@ -345,6 +352,7 @@ class CalendarHeatmap extends React.Component {
       const [x, y] = this.getMonthLabelCoordinates(weekIndex);
       if (endOfWeek.getDate() >= 1 && endOfWeek.getDate() <= DAYS_IN_WEEK) {
         return  <g key={weekIndex} className="month-stuff" transform={`translate(0,${y})`}>
+          {/*this.renderMonthLabel(weekIndex, endOfWeek, x + SQUARE_SIZE, SQUARE_SIZE * 2)*/}
                   {this.renderMonthLabel(weekIndex, endOfWeek, x + SQUARE_SIZE, SQUARE_SIZE * 2)}
                 </g>
       }
@@ -377,7 +385,9 @@ class CalendarHeatmap extends React.Component {
     if (!this.latestProps.showMonthLabels) {
       return null;
     }
-    return  <text key={weekIndex} x={x} y={y} className={`${CSS_PSEDUO_NAMESPACE}month-label`}>
+    return  <text key={weekIndex} x={x} y={y} 
+              transform={this.getTransformForMonthLabel()}
+              className={`${CSS_PSEUDO_NAMESPACE}month-label`}>
               {monthLabel(endOfWeek.getMonth(), this.latestProps.type) +' ' + 
                 Math.abs(endOfWeek.getFullYear()) + ' ' + (endOfWeek.getFullYear() < 1 ? 'BCE' : 'CE')
               }
@@ -409,7 +419,7 @@ class CalendarHeatmap extends React.Component {
     }
     return this.latestProps.weekdayLabels.map((weekdayLabel, dayIndex) => {
       const [x, y] = this.getWeekdayLabelCoordinates(dayIndex);
-      const cssClasses = `${this.latestProps.horizontal ? '' : `${CSS_PSEDUO_NAMESPACE}small-text`} ${CSS_PSEDUO_NAMESPACE}weekday-label`;
+      const cssClasses = `${this.latestProps.horizontal ? '' : `${CSS_PSEUDO_NAMESPACE}small-text`} ${CSS_PSEUDO_NAMESPACE}weekday-label`;
       // eslint-disable-next-line no-bitwise
       //return dayIndex & 1 ? (....)
       return (
@@ -423,15 +433,14 @@ class CalendarHeatmap extends React.Component {
   }
 
   render() {
+    //<g transform={this.getTransformForMonthLabels()} className={`${CSS_PSEUDO_NAMESPACE}month-labels`}> </g>
     return (
       <svg className="react-calendar-heatmap" viewBox={this.getViewBox()}>
-        <g transform={this.getTransformForMonthLabels()} className={`${CSS_PSEDUO_NAMESPACE}month-labels`}>
-        </g>
-        <g transform={this.getTransformForAllWeeks()} className={`${CSS_PSEDUO_NAMESPACE}all-weeks`}>
+        <g transform={this.getTransformForAllWeeks()} className={`${CSS_PSEUDO_NAMESPACE}all-weeks`}>
           {this.renderAllWeeks()}
           {this.renderMonthStuff()}
         </g>
-        <g transform={this.getTransformForWeekdayLabels()} className={`${CSS_PSEDUO_NAMESPACE}weekday-labels`}>
+        <g transform={this.getTransformForWeekdayLabels()} className={`${CSS_PSEUDO_NAMESPACE}weekday-labels`}>
           {this.renderWeekdayLabels()}
         </g>
       </svg>
