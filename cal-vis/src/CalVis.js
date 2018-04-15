@@ -34,17 +34,23 @@ export default class CalVis extends Component {
     this.state = {}
     this.hover = this.hover.bind(this)
     this.squares = this.squares.bind(this)
+    this.squareRef = this.squareRef.bind(this)
+    this.squareRefs = []
+  }
+  squareRef(ref) {
+    let index = ref.getAttribute('data-index')
+    this.squareRefs[index] = ref
   }
   hover(evt, value, cal) {
     if (this.state.hoverDate !== value) {
-      this.setState({ hoverValue: value })
+      this.setState({ hoverValue: value, targetContent: this.squareRefs[4] })
     }
   }
-  squares (value, index, mday, cal, d={}, props={}) {
+  squares(value, index, mday, cal, d={}, props={}) {
     let [hy, hm, hd] = value.heb
     //if (cal !== this) debugger
     return (
-      <g>
+      <g className="square">
         <rect
           width={d.ss}
           height={d.ss}
@@ -111,7 +117,11 @@ export default class CalVis extends Component {
     return  <div style={{clear:'both'}}>
               <RSTooltip 
                   popperContent={<div>POPPER!!!! <DateDesc jsDate={(this.state.hoverValue && this.state.hoverValue.date) || centerDate} /></div>}
-                  targetContent={<div>Here's the date: {centerDate.toString()}</div>}
+                  targetContent={
+                    this.state.targetContent 
+                      ? this.state.targetContent
+                      : <div>Here's the date: {centerDate.toString()}</div>
+                    }
                   targetProps={{
                     style:{ width: 620, height: 120, background: '#b4da55', }
                   }}
@@ -162,11 +172,12 @@ export default class CalVis extends Component {
                       onClick={customOnClick}
                       //textContent={textContent}
                       horizontal={false}
+                      squareRef={this.squareRef}
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
                             {this.squares(value, index, value.mday, cal, d, props)}
-                            {dateText(value, index, value.mday, cal, d, props)}
+                            {dateText(value, index, value.mday, cal, d, props, 'greg')}
                           </g>
                         )
                       }
@@ -186,7 +197,7 @@ export default class CalVis extends Component {
                         (value, index, cal, d={}, props={}) => (
                           <g>
                             {this.squares(value, index, value.heb[2], cal, d, props)}
-                            {dateText(value, index, value.heb[2], cal, d, props)}
+                            {dateText(value, index, value.heb[2], cal, d, props, 'heb')}
                           </g>
                         )
                       }
@@ -205,7 +216,7 @@ export default class CalVis extends Component {
                       squareContents={
                         (value, index, cal, d={}, props={}) => (
                           <g>
-                            {this.squares(value, index, value.heb[2], cal, d, props)}
+                            {this.squares(value, index, value.heb[2], cal, d, props, 'moon')}
                             {moons(value, index, cal, d, props)}
                           </g>
                         )
@@ -219,7 +230,8 @@ export default class CalVis extends Component {
 }
 
 
-const dateText = (value, index, mday, cal, d={}, props={}) => {
+const dateText = (value, index, mday, cal, d={}, props={}, calType) => {
+  //if (calType === 'heb') { debugger }
   return (
     <text
       key={'t'+index}
@@ -248,95 +260,6 @@ const moons = (value, index, cal, d={}, props={}) => {
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function d3_bostock_version() {
-  var width = 960,
-      height = 136,
-      cellSize = 17;
-
-  var formatPercent = d3.format(".1%");
-
-  var color = d3.scaleQuantize()
-      .domain([-0.05, 0.05])
-      .range(["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#d9ef8b", "#a6d96a", "#66bd63", "#1a9850", "#006837"]);
-
-  var svg = d3.select("body")
-    .selectAll("svg")
-    .data(d3.range(1990, 2011))
-    .enter().append("svg")
-      .attr("width", width)
-      .attr("height", height)
-    .append("g")
-      .attr("transform", "translate(" + ((width - cellSize * 53) / 2) + "," + (height - cellSize * 7 - 1) + ")");
-
-  svg.append("text")
-      .attr("transform", "translate(-6," + cellSize * 3.5 + ")rotate(-90)")
-      .attr("font-family", "sans-serif")
-      .attr("font-size", 10)
-      .attr("text-anchor", "middle")
-      .text(function(d) { return d; });
-
-  var rect = svg.append("g")
-      .attr("fill", "none")
-      .attr("stroke", "#ccc")
-    .selectAll("rect")
-    .data(function(d) { return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
-    .enter().append("rect")
-      .attr("width", cellSize)
-      .attr("height", cellSize)
-      .attr("x", function(d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
-      .attr("y", function(d) { return d.getDay() * cellSize; })
-      .datum(d3.timeFormat("%Y-%m-%d"));
-
-  svg.append("g")
-      .attr("fill", "none")
-      .attr("stroke", "#000")
-    .selectAll("path")
-    .data(function(d) { return d3.timeMonths(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
-    .enter().append("path")
-      .attr("d", pathMonth);
-
-  d3.csv("dji.csv", function(error, csv) {
-    if (error) throw error;
-
-    var data = d3.nest()
-        .key(function(d) { return d.Date; })
-        .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })
-      .object(csv);
-
-    rect.filter(function(d) { return d in data; })
-        .attr("fill", function(d) { return color(data[d]); })
-      .append("title")
-        .text(function(d) { return d + ": " + formatPercent(data[d]); });
-  });
-  function pathMonth(t0) {
-    var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
-        d0 = t0.getDay(), w0 = d3.timeWeek.count(d3.timeYear(t0), t0),
-        d1 = t1.getDay(), w1 = d3.timeWeek.count(d3.timeYear(t1), t1);
-    return "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
-        + "H" + w0 * cellSize + "V" + 7 * cellSize
-        + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
-        + "H" + (w1 + 1) * cellSize + "V" + 0
-        + "H" + (w0 + 1) * cellSize + "Z";
-  }
-}
-*/
-
 export class DateDesc extends Component {
   render() {
     let {jsDate, } = this.props
@@ -348,16 +271,16 @@ export class DateDesc extends Component {
       <div className="main">
         <div style={{clear:'both'}} >
           <div>
-            Javascript date: {jsDate.toString()}
-          </div>
-          <div>
-            Gregorian date: {gm + 1} / {gd} / {gy}
-          </div>
-          <div>
             Julian day: {commify(jd)}
           </div>
           <div>
-            Hebrew date: {hm} / {hd} / {hy}
+            Javascript date: {jsDate.toString()}
+          </div>
+          <div>
+            Gregorian date: {gd} {H.monthLabel(gm, 'gregorian', 0)} {gy}
+          </div>
+          <div>
+            Hebrew date: {hd} {H.monthLabel(hm,'hebrew')} {hy}
           </div>
           <div>
             Moon phase: {H.moon_phase(jsDate)} {H.moon(jsDate, 20)}

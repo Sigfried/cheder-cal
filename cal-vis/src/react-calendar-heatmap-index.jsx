@@ -57,10 +57,11 @@ export function moon(date, size='10px') {
 export const monthLabel = (num, type='gregorian', base=0) => {
   num -= base
   if (type === 'gregorian') {
+    //console.log(num, GREG_MONTH_LABELS[num])
     return GREG_MONTH_LABELS[num]
   }
   if (type === 'hebrew') {
-    return HEB_MONTH_ENG_LABELS[num]
+    return HEB_MONTH_ENG_LABELS[num] + ' ' + num
   }
 }
 
@@ -239,7 +240,7 @@ class CalendarHeatmap extends React.Component {
   }
   */
   getTransformForMonthLabel() {
-    return `rotate(270) translate(0, -25)`
+    return `rotate(270) translate(-40, 0)`
     //return `translate(${this.getWeekWidth() + MONTH_LABEL_GUTTER_SIZE}, 0)`;
   }
 
@@ -323,13 +324,27 @@ class CalendarHeatmap extends React.Component {
     const { transformDayElement } = this.latestProps;
     let ret = transformDayElement ? transformDayElement(rect, value, index) : rect;
     */
-    const { squareContents } = this.latestProps;
+    const { squareContents, 
+              // squareRef=()=>{}, 
+          } = this.latestProps;
     let gs = this.latestProps.gutterSize
     let ss = SQUARE_SIZE
-    return  <g key={index}
+    return  <g key={index} 
+                //ref={squareRef} 
+                data-index={index}
                 transform={`translate(${x},${y})`}
             >
               {squareContents(value, index, this, {gs,ss})}
+              {/*
+              <Square render={
+                ({x,y}) => {
+                  if (x || y) {
+                    return <text className="wtf" >{x},{y}</text>
+                  }
+                  return squareContents(value, index, this, {gs,ss})
+                }
+              } />
+              */}
             </g>
   }
 
@@ -351,6 +366,7 @@ class CalendarHeatmap extends React.Component {
       const endOfWeek = shiftDate(this.getStartDateWithEmptyDays(), (weekIndex + 1) * DAYS_IN_WEEK);
       const [x, y] = this.getMonthLabelCoordinates(weekIndex);
       if (endOfWeek.getDate() >= 1 && endOfWeek.getDate() <= DAYS_IN_WEEK) {
+        //console.log(weekIndex, endOfWeek.getMonth(), GREG_MONTH_LABELS[endOfWeek.getMonth()])
         return  <g key={weekIndex} className="month-stuff" transform={`translate(0,${y})`}>
           {/*this.renderMonthLabel(weekIndex, endOfWeek, x + SQUARE_SIZE, SQUARE_SIZE * 2)*/}
                   {this.renderMonthLabel(weekIndex, endOfWeek, x + SQUARE_SIZE, SQUARE_SIZE * 2)}
@@ -385,7 +401,9 @@ class CalendarHeatmap extends React.Component {
     if (!this.latestProps.showMonthLabels) {
       return null;
     }
-    return  <text key={weekIndex} x={x} y={y} 
+    console.log(this, weekIndex, endOfWeek, x, y)
+
+    return  <text key={weekIndex} //x={x} y={y} 
               transform={this.getTransformForMonthLabel()}
               className={`${CSS_PSEUDO_NAMESPACE}month-label`}>
               {monthLabel(endOfWeek.getMonth(), this.latestProps.type) +' ' + 
@@ -488,6 +506,24 @@ CalendarHeatmap.defaultProps = {
 
 export default CalendarHeatmap;
 
+class Square extends React.Component {
+  state = { x: 0, y: 0 }
+  handleMouseMove = (event) => {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY
+    })
+  }
+
+  render() {
+    return (
+      <g style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+        {this.props.render(this.state)}
+      </g>
+    )
+  }
+}
+  
 // returns a new date shifted a certain number of days (can be negative)
 export function shiftDate(date, numDays) {
   const newDate = new Date(date);
